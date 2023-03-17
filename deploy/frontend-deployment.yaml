@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: frontend
   annotations:
-    
+  namespace: default  
 spec:
   selector:
     matchLabels:
