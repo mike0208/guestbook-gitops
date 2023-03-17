@@ -55,11 +55,16 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -a -m "changed the kustomization.yaml in deploy"
-          git push 
+    - name: Push changes to master
+      uses: ad-m/github-push-action@master
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+          force: true 
     # Add additional steps here like scanning of image
 
     # Only push to registry on master
-    - name: Push
+    - name: Push image to ECR
       if: github.ref == 'refs/heads/master'
       run: |
         # Push image to AWS ECR
