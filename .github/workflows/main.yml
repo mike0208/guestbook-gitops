@@ -54,14 +54,8 @@ jobs:
       run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -a -m "$CONTAINER_IMAGE"
-    - name: Push changes to master
-      uses: ad-m/github-push-action@master
-      with:
-          github_token: ${{ secrets.PAT }}
-          branch: master
-          force: true       
-    
+          git commit -a -m "changed the kustomization.yaml in deploy"
+          git push 
     # Add additional steps here like scanning of image
 
     # Only push to registry on master
